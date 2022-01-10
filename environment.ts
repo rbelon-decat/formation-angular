@@ -1,3 +1,3 @@
 export const environment = {
-  shop_name: 'RobinExpress',
+  shop_name: '🍏 FruitExpress',
 };

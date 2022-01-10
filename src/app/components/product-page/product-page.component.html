@@ -1,25 +1,29 @@
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb mt-2">
+  <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">
       <a [routerLink]="['/products']">Produits</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
-      {{ product.name }}
+      {{ product?.name }}
     </li>
   </ol>
 </nav>
 
-<div class="card m-3">
+<div class="alert alert-warning" role="alert" *ngIf="!product">
+  Ce produit n'est plus disponible, <a [routerLink]="['/']">Retourner à l'accueil</a>.
+</div>
+
+<div class="card" *ngIf="product?.name">
   <div class="row no-gutters">
     <div class="col-auto">
       <img
         src="{{ product.images[0] }}"
-        class="img-fluid p-2"
+        class="img-fluid p-3"
         alt="{{ product.name }}"
       />
     </div>
     <div class="col">
-      <div class="card-block px-2 mt-2">
+      <div class="card-block px-2 mt-3">
         <h4 class="card-title">{{ product.name }}</h4>
         <p class="card-text">{{ product.description }}</p>
         <div class="card-text d-flex justify-content-start">

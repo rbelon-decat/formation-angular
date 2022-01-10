@@ -1,5 +1,5 @@
 {
-  "products" : [
+  "products": [
     {
       "id": 1,
       "name": "Pomme rouge",
@@ -8,17 +8,30 @@
       ],
       "stock": 12,
       "price": 0.99,
-      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner."
+      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner.",
+      "category": "fruit"
+    },
+    {
+      "id": 6,
+      "name": "Aubergine",
+      "images": [
+        "https://mapetiteassiette.com/wp-content/uploads/2020/07/aubergine.jpg"
+      ],
+      "stock": 22,
+      "price": 0.99,
+      "description": "L’aubergine est une plante dicotylédone de la famille des Solanaceae, cultivées pour son légume-fruit.",
+      "category": "legume"
     },
     {
       "id": 2,
       "name": "Poire",
       "images": [
-        "http://www.bien-manger-selon-les-saisons.com/produits-de-saison/fruits/images/fruit-poire-conference.jpg"
+        "https://tous-les-fruits.com/wp-content/uploads/2018/02/poire.jpg?ezimgfmt=ng%3Awebp%2Fngcb27%2Frs%3Adevice%2Frscb27-2"
       ],
       "stock": 46,
-      "price": 2.49,
-      "description": "Une poire parfaite pour une pause équilibrée !"
+      "price": 1.39,
+      "description": "Une poire parfaite pour une pause équilibrée !",
+      "category": "fruit"
     },
     {
       "id": 3,
@@ -28,29 +41,78 @@
       ],
       "stock": 0,
       "price": 3.79,
-      "description": "Un lot d'1kg de bananes pour un apport en fer quotidien."
+      "description": "Un lot d'1kg de bananes pour un apport en fer quotidien.",
+      "category": "fruit"
+    },
+    {
+      "id": 4,
+      "name": "Clementines",
+      "images": [
+        "https://fridg-front.s3.amazonaws.com/media/CACHE/images/products/clementine-feuille-environ-500-g/1d1dc4234441d936f21826ca64b75e06.jpg"
+      ],
+      "stock": 9,
+      "price": 2.79,
+      "description": "Le fruit parfait pour faire le plein de vitamines pendant l'hiver",
+      "category": "fruit"
+    },
+    {
+      "id": 5,
+      "name": "Tomates",
+      "images": [
+        "https://cdn.manomano.com/images/images_products/1388202/P/3371756_1.jpg"
+      ],
+      "stock": 43,
+      "price": 0.39,
+      "description": "La tomate est une espèce de plantes herbacées du genre Solanum de la famille des Solanacées",
+      "category": "legume-fruit"
+    },
+    {
+      "id": 7,
+      "name": "Poireau",
+      "images": [
+        "https://produits.bienmanger.com/34835-0w470h470_Poireaux_France_Bio.jpg"
+      ],
+      "stock": 3,
+      "price": 1.19,
+      "description": "Le poireau cultivé est cultivée comme plante potagère pour ses feuilles consommées comme légumes.",
+      "category": "legume"
     }
   ],
   "users": [
     {
       "id": 1,
-      "name": "Robin"
+      "name": "Robin",
+      "role": "superadmin"
     },
     {
       "id": 2,
-      "name": "Julien"
+      "name": "Julien",
+      "role": "admin"
     },
     {
       "id": 3,
-      "name": "Kyo"
+      "name": "Kyo",
+      "role": "user"
     },
     {
       "id": 4,
-      "name": "Yoann"
+      "name": "Yoann",
+      "role": "user"
     },
     {
       "id": 5,
-      "name": "Iulia"
+      "name": "Iulia",
+      "role": "user"
+    },
+    {
+      "id": 6,
+      "name": "Camille",
+      "role": "user"
+    },
+    {
+      "id": 7,
+      "name": "Joseph",
+      "role": "user"
     }
   ]
 }

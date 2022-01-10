@@ -1,12 +1,47 @@
-<div class="d-flex mt-3 mb-3 flex-wrap">
-  <div class="card m-1" *ngFor="let product of products">
+<div class="d-flex mb-3 flex-wrap justify-content-evenly">
+  <button type="button" class="btn btn-outline-primary" (click)="getProducts()">
+    Tous
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="getProductsByCategory('fruit')"
+  >
+    Fruits
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary ml-2"
+    (click)="getProductsByCategory('legume')"
+  >
+    Légumes
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary ml-2"
+    (click)="getProductsByCategory('legume-fruit')"
+  >
+    Légume-fruit
+  </button>
+</div>
+
+<div
+  class="d-flex mb-3 flex-wrap justify-content-center"
+  *ngIf="products?.length"
+>
+  <div class="card m-2" *ngFor="let product of products">
     <img
       src="{{ product.images[0] }}"
-      class="card-img-top"
+      class="card-img-top p-2"
       alt="{{ product.name }}"
     />
     <div class="card-body">
-      <h5 class="card-title">{{ product.name }}</h5>
+      <h5 class="card-title">
+        {{ product.name }}
+        <span class="badge rounded-pill bg-secondary">{{
+          product.category | titlecase
+        }}</span>
+      </h5>
       <p class="card-text">{{ product.description }}</p>
       <a
         [routerLink]="['/products/', product.id]"
@@ -18,4 +53,7 @@
       >
     </div>
   </div>
+</div>
+<div class="alert alert-warning" role="alert" *ngIf="!products?.length">
+  Nous n'avons trouvé aucun produit, veuillez réessayer plus tard.
 </div>

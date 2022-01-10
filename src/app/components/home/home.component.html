@@ -1,20 +1,22 @@
 <p>home works!</p>
 
-<table>
+<table class="table table-striped">
+  <thead>
     <tr>
-        <th>
-            id
-        </th>
-        <th>
-            name
-        </th>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Rôle</th>
     </tr>
+  </thead>
+  <tbody>
     <tr *ngFor="let user of users">
-        <td>
-            {{ user.id }}
-        </td>
-        <td>
-            {{ user.name }}
-        </td>
+      <th>#{{ user.id }}</th>
+      <td>
+        {{ user.name }}
+      </td>
+      <td>
+        {{ user.role }}
+      </td>
     </tr>
+  </tbody>
 </table>

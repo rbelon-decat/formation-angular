@@ -23,7 +23,13 @@ export class ProductsComponent implements OnInit {
       .subscribe((data) => console.log(data));
   }
 
-  private getProducts(): void {
+  public getProductsByCategory(category: string): void {
+    this.productService
+      .getProductByCategory(category)
+      .subscribe((data) => (this.products = data));
+  }
+
+  public getProducts(): void {
     this.productService
       .getProducts()
       .subscribe((data) => (this.products = data));
