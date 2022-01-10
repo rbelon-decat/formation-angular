@@ -8,9 +8,10 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, HomeComponent, NavbarComponent, ProductsComponent],
+  declarations: [AppComponent, AboutComponent, HomeComponent, NavbarComponent, ProductsComponent, ProductPageComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

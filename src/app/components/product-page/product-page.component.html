@@ -1,0 +1,40 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2">
+    <li class="breadcrumb-item">
+      <a [routerLink]="['/products']">Produits</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      {{ product.name }}
+    </li>
+  </ol>
+</nav>
+
+<div class="card m-3">
+  <div class="row no-gutters">
+    <div class="col-auto">
+      <img
+        src="{{ product.images[0] }}"
+        class="img-fluid p-2"
+        alt="{{ product.name }}"
+      />
+    </div>
+    <div class="col">
+      <div class="card-block px-2 mt-2">
+        <h4 class="card-title">{{ product.name }}</h4>
+        <p class="card-text">{{ product.description }}</p>
+        <div class="card-text d-flex justify-content-start">
+          <span
+            class="badge bg-primary p-2"
+            >{{ product.price | currency: 'EUR' }}</span
+          >
+          <div style="width: 5px;"></div>
+          <span
+            class="badge bg-success p-2"
+            [ngClass]="{ 'bg-danger': !product.stock }"
+            >{{ product.stock }} en stock</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

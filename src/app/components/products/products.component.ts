@@ -17,6 +17,10 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+
+    this.productService
+      .getProductById(1)
+      .subscribe((data) => console.log(data));
   }
 
   private getProducts(): void {
