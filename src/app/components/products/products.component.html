@@ -8,11 +8,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
       <p class="card-text">{{ product.description }}</p>
-      <a
-        class="btn btn-primary buy-btn"
-        [ngClass]="{ 'btn-danger': !product.stock }"
-        >{{ product.price | currency: 'EUR' }}</a
-      >
+      <a class="btn btn-primary buy-btn" [ngClass]="{'btn-danger': !product.stock }">{{ product.stock ? (product.price | currency: 'EUR') : 'Rupture de stock' }}</a>
     </div>
   </div>
 </div>
