@@ -6,9 +6,9 @@
       "images": [
         "https://www.conservation-nature.fr/wp-content/uploads/visuel/fruit/shutterstock_575378506.jpg"
       ],
-      "disponibility": "in_stock",
-      "price": 2.00,
-      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner"
+      "stock": 12,
+      "price": 0.99,
+      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner."
     },
     {
       "id": 2,
@@ -16,9 +16,19 @@
       "images": [
         "http://www.bien-manger-selon-les-saisons.com/produits-de-saison/fruits/images/fruit-poire-conference.jpg"
       ],
-      "disponibility": "in_stock",
-      "price": 2.50,
-      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner"
+      "stock": 46,
+      "price": 2.49,
+      "description": "Une poire parfaite pour une pause équilibrée !"
+    },
+    {
+      "id": 3,
+      "name": "Bananes",
+      "images": [
+        "https://back.femininbio.com/attachments/2020/11/20/square/w1000/11065-banane.jpg"
+      ],
+      "stock": 0,
+      "price": 3.79,
+      "description": "Un lot d'1kg de bananes pour un apport en fer quotidien."
     }
   ],
   "users": [
