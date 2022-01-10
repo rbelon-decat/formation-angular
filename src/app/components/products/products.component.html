@@ -1,27 +1,16 @@
 <div class="d-flex mb-3 flex-wrap justify-content-evenly">
   <button type="button" class="btn btn-outline-primary" (click)="getProducts()">
+    <!-- Button to reset all filters and get all products by calling "getProducts()" -->
     Tous
   </button>
   <button
     type="button"
     class="btn btn-primary"
-    (click)="getProductsByCategory('fruit')"
+    *ngFor="let category of categories"
+    (click)="getProductsByCategory(category)"
   >
-    Fruits
-  </button>
-  <button
-    type="button"
-    class="btn btn-primary ml-2"
-    (click)="getProductsByCategory('legume')"
-  >
-    Légumes
-  </button>
-  <button
-    type="button"
-    class="btn btn-primary ml-2"
-    (click)="getProductsByCategory('legume-fruit')"
-  >
-    Légume-fruit
+    <!-- Button to get products by category -->
+    {{ category | titlecase }}
   </button>
 </div>
 
@@ -54,6 +43,8 @@
     </div>
   </div>
 </div>
+
 <div class="alert alert-warning" role="alert" *ngIf="!products?.length">
+  <!-- If no products found, show an error message -->
   Nous n'avons trouvé aucun produit, veuillez réessayer plus tard.
 </div>

@@ -8,6 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
+  categories = ['fruit', 'legume', 'legume-fruit'];
   products: any;
 
   constructor(
@@ -24,6 +25,11 @@ export class ProductsComponent implements OnInit {
   }
 
   public getProductsByCategory(category: string): void {
+    // If input category not exists in categories list (to prevent injections), return all products
+    if (!this.categories.includes(category)) {
+      this.getProducts();
+    }
+
     this.productService
       .getProductByCategory(category)
       .subscribe((data) => (this.products = data));
