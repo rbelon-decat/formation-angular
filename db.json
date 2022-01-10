@@ -1,0 +1,46 @@
+{
+  "products" : [
+    {
+      "id": 1,
+      "name": "Pomme rouge",
+      "images": [
+        "https://www.conservation-nature.fr/wp-content/uploads/visuel/fruit/shutterstock_575378506.jpg"
+      ],
+      "disponibility": "in_stock",
+      "price": 2.00,
+      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner"
+    },
+    {
+      "id": 2,
+      "name": "Poire",
+      "images": [
+        "http://www.bien-manger-selon-les-saisons.com/produits-de-saison/fruits/images/fruit-poire-conference.jpg"
+      ],
+      "disponibility": "in_stock",
+      "price": 2.50,
+      "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Robin"
+    },
+    {
+      "id": 2,
+      "name": "Julien"
+    },
+    {
+      "id": 3,
+      "name": "Kyo"
+    },
+    {
+      "id": 4,
+      "name": "Yoann"
+    },
+    {
+      "id": 5,
+      "name": "Iulia"
+    }
+  ]
+}
