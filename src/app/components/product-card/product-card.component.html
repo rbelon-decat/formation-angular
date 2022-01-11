@@ -1,4 +1,4 @@
-<div class="card h-100 p-2">
+<div class="card h-100 p-2" *ngIf="product">
   <span class="stock bg-success" [ngClass]="{'bg-danger': !product.available}"></span>
   <img
     src="{{ product.images[0] }}"
@@ -13,7 +13,7 @@
     <p class="card-text">{{ product.description }}</p>
   </div>
   <div class="d-flex align-items-baseline">
-    <p class="text-muted me-auto">&nbsp; {{ product.stock }} restants</p>
+    <p class="me-auto" [ngClass]="{'text-danger': !product.stock, 'text-muted': product.stock}">&nbsp; {{ product.stock }} restants</p>
     <p class="p-2 h5">
       {{ product.price | currency: 'EUR' }}
     </p>

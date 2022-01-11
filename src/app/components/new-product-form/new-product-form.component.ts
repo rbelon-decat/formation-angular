@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
 export class NewProductFormComponent implements OnInit {
   showErrors = false;
 
-  constructor(private readonly productService: ProductService) {}
+  constructor(
+    private readonly productService: ProductService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -30,16 +34,16 @@ export class NewProductFormComponent implements OnInit {
       return;
     }
 
-    this.productService.newProduct({
-      name: form.value.productName,
-      images: [form.value.productImage],
-      stock: form.value.productStock || 0,
-      available: true,
-      price: form.value.productPrice,
-      description: form.value.productDescription,
-      category: form.value.productCategory,
-    }).subscribe();
-
-    // Redirect to new product page (get id in subscribe)
+    this.productService
+      .newProduct({
+        name: form.value.productName,
+        images: [form.value.productImage],
+        stock: form.value.productStock || 0,
+        available: true,
+        price: form.value.productPrice,
+        description: form.value.productDescription,
+        category: form.value.productCategory,
+      })
+      .subscribe((data) => this.router.navigate(['/products', data.id]));
   }
 }

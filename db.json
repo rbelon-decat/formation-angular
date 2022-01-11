@@ -19,7 +19,7 @@
         "https://mapetiteassiette.com/wp-content/uploads/2020/07/aubergine.jpg"
       ],
       "stock": 22,
-      "available": true,
+      "available": false,
       "price": 0.99,
       "description": "L’aubergine est une plante dicotylédone de la famille des Solanaceae, cultivées pour son légume-fruit.",
       "category": "legume"
