@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NavbarComponent,
     ProductsComponent,
     ProductPageComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
