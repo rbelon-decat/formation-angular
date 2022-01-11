@@ -6,32 +6,44 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './products.component.html',
 })
 export class ProductsComponent implements OnInit {
-  categories = ['fruit', 'legume', 'legume-fruit'];
+  selectedCategory: string = 'all';
   products: any;
-  showQuantities = false;
+  page = 1;
 
   constructor(private readonly productService: ProductService) {}
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProducts(this.page, this.selectedCategory);
   }
 
-  public getProductsByCategory(category: string): void {
+  public get getCategories(): string[] {
+    return this.productService.categories;
+  }
+
+  public getProducts(page: number, category: string): void {
     // If input category not exists in categories list (to prevent injections), return all products
-    if (!this.categories.includes(category)) {
-      this.getProducts();
+    if (!this.productService.categories.includes(category)) {
+      return;
     }
-    
-    this.showQuantities = true;
+
+    this.selectedCategory = category;
+
     this.productService
-      .getProducts(category)
+      .getProducts(this.page, category)
       .subscribe((data) => (this.products = data));
   }
 
-  public getProducts(): void {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
-      this.showQuantities = false;
-    });
+  public nextPage(): void {
+    if(this.products.length && this.products.length >= this.productService.PAGINATION_LIMIT) {
+      this.page++;
+      this.getProducts(this.page, this.selectedCategory);
+    }
+  }
+
+  public previousPage(): void {
+    if(this.page > 1) {
+      this.page --;
+      this.getProducts(this.page, this.selectedCategory);
+    }
   }
 }

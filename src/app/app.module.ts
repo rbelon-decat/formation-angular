@@ -11,6 +11,9 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { FormsModule } from '@angular/forms';
+import { NewProductFormComponent } from './components/new-product-form/new-product-form.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,15 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     ProductsComponent,
     ProductPageComponent,
     ProductCardComponent,
+    AuthComponent,
+    NewProductFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

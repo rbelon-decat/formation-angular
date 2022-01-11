@@ -1,0 +1,139 @@
+<h1 class="p-2">Ajouter un produit</h1>
+
+<form (ngSubmit)="onSubmit(addProduct)" #addProduct="ngForm">
+  <div class="row mb-3">
+    <div class="col">
+      <label for="productName" class="form-label">Nom</label>
+      <input
+        [ngClass]="{ 'is-invalid': getErrors(addProduct, 'productName') }"
+        type="text"
+        class="form-control"
+        id="productName"
+        name="productName"
+        ngModel
+        required
+      />
+      <div
+        class="form-text text-danger"
+        *ngIf="getErrors(addProduct, 'productName')"
+      >
+        {{ getErrors(addProduct, 'productName') | json }}
+      </div>
+    </div>
+    <div class="col">
+      <label for="productCategory">Catégorie</label>
+      <select
+        [ngClass]="{ 'is-invalid': getErrors(addProduct, 'productCategory') }"
+        name="productCategory"
+        id="productCategory"
+        class="form-select mt-2"
+        ngModel
+        required
+      >
+        <option
+          *ngFor="let category of getCategories; let first = first"
+          value="{{ category }}"
+        >
+          {{ category | titlecase }}
+        </option>
+      </select>
+      <div
+        class="form-text text-danger"
+        *ngIf="getErrors(addProduct, 'productCategory')"
+      >
+        {{ getErrors(addProduct, 'productCategory') | json }}
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="productImage" class="form-label">Image (URL)</label>
+    <input
+      [ngClass]="{ 'is-invalid': getErrors(addProduct, 'productImage') }"
+      type="text"
+      class="form-control"
+      id="productImage"
+      name="productImage"
+      ngModel
+      required
+    />
+    <div
+      class="form-text text-danger"
+      *ngIf="getErrors(addProduct, 'productImage')"
+    >
+      {{ getErrors(addProduct, 'productImage') | json }}
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <label for="productPrice" class="form-label">Prix</label>
+      <input
+        [ngClass]="{ 'is-invalid': getErrors(addProduct, 'productPrice') }"
+        type="number"
+        class="form-control"
+        id="productPrice"
+        name="productPrice"
+        min="1"
+        step="any"
+        ngModel
+        required
+      />
+      <div
+        class="form-text text-danger"
+        *ngIf="getErrors(addProduct, 'productPrice')"
+      >
+        {{ getErrors(addProduct, 'productPrice') | json }}
+      </div>
+    </div>
+    <div class="col">
+      <label for="productStock" class="form-label">Stock de départ</label>
+      <input
+        [ngClass]="{ 'is-invalid': getErrors(addProduct, 'productStock') }"
+        type="number"
+        class="form-control"
+        id="productStock"
+        name="productStock"
+        min="0"
+        step="any"
+        ngModel
+      />
+    </div>
+    <div
+      class="form-text text-danger"
+      *ngIf="getErrors(addProduct, 'productStock')"
+    >
+      {{ getErrors(addProduct, 'productStock') | json }}
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="productDescription" class="form-label">Description</label>
+    <textarea
+      [ngClass]="{ 'is-invalid': getErrors(addProduct, 'productDescription') }"
+      class="form-control"
+      id="productDescription"
+      name="productDescription"
+      rows="3"
+      ngModel
+      required
+      minlength="15"
+    ></textarea>
+    <div
+      class="form-text text-danger"
+      *ngIf="getErrors(addProduct, 'productDescription')"
+    >
+      {{ getErrors(addProduct, 'productDescription') | json }}
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [attr.disabled]="addProduct.invalid"
+  >
+    Ajouter un produit
+  </button>
+
+  <a [routerLink]="['/products']">Retour aux produits</a>
+</form>

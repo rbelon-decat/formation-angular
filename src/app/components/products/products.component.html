@@ -1,35 +1,58 @@
-<div class="row justify-content-md-center mb-3">
-  <div class="col-2 d-flex flex-wrap flex-column">
-    <button type="button" class="btn btn-dark" (click)="getProducts()">
-      <!-- Button to reset all filters and get all products by calling "getProducts()" -->
-      Tous
-    </button>
+<div class="row justify-content-md-center mb-3 flex-wrap">
+  <div class="col-sm d-flex flex-wrap flex-column">
+
+    <!-- Category buttons -->
     <button
       type="button"
       class="btn btn-outline-dark mt-2"
-      *ngFor="let category of categories"
-      (click)="getProductsByCategory(category)"
+      *ngFor="let category of getCategories"
+      (click)="getProducts(page, category)"
+      [ngClass]="{ 'btn-dark text-white': selectedCategory === category }"
     >
-      <!-- Button to get products by category -->
       {{ category | titlecase }}
     </button>
-  </div>
 
-  <div class="col" *ngIf="products?.length">
-    <div class="alert alert-secondary" role="alert" *ngIf="showQuantities">
+    <!-- Number of results -->
+    <div
+      class="alert alert-primary mt-2"
+      role="alert"
+      *ngIf="selectedCategory !== 'all'"
+    >
       {{ products.length }} produit(s) trouvé(s)
     </div>
-    <!-- Product card -->
-    <div class="d-flex flex-wrap justify-content-center">
+
+    <!-- Pagination -->
+    <div class="btn-group mt-2" role="group" aria-label="Pagination">
+      <button type="button" class="btn btn-primary" (click)="previousPage()">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+      <button class="btn btn-primary" disabled>{{ page }}</button>
+      <button type="button" class="btn btn-primary" (click)="nextPage()">
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="col-10">
+    <div
+      class="d-flex flex-wrap justify-content-center"
+      *ngIf="products?.length"
+    >
+      <!-- Product card -->
       <app-product-card
         *ngFor="let product of products"
         [product]="product"
+        class="m-2"
       ></app-product-card>
     </div>
-  </div>
-
-  <div class="alert alert-warning" role="alert" *ngIf="!products?.length">
-    <!-- If no products found, show an error message -->
-    Nous n'avons trouvé aucun produit, veuillez réessayer plus tard.
+    <div
+      class="alert alert-warning mt-2"
+      role="alert"
+      *ngIf="!products?.length"
+    >
+      <!-- If no products found, show an error message -->
+      Nous n'avons trouvé aucun produit, veuillez réessayer plus tard.
+    </div>
   </div>
 </div>
