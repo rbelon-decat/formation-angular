@@ -19,7 +19,7 @@
       type="button"
       class="btn btn-outline-dark mt-2"
       *ngFor="let category of getCategories"
-      (click)="getProducts(page, category)"
+      (click)="getProducts(page, category, searchInput)"
       [ngClass]="{ 'btn-dark text-white': selectedCategory === category }"
     >
       {{ category | titlecase }}
@@ -39,7 +39,7 @@
       <button type="button" class="btn btn-primary" (click)="previousPage()">
         <i class="bi bi-arrow-left"></i>
       </button>
-      <button class="btn btn-primary" disabled>{{ page }}</button>
+      <button class="btn btn-primary">{{ page }}</button>
       <button type="button" class="btn btn-primary" (click)="nextPage()">
         <i class="bi bi-arrow-right"></i>
       </button>

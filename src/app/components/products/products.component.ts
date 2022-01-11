@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
       .subscribe((data) => (this.products = data));
   }
 
-  public getProducts(page: number, category: string): void {
+  public getProducts(page: number, category: string, search?: string): void {
     // If input category not exists in categories list (to prevent injections), return all products
     if (!this.productService.categories.includes(category)) {
       return;
@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit {
     this.selectedCategory = category;
 
     this.productService
-      .getProducts(this.page, category)
+      .getProducts(this.page, category, this.searchInput)
       .subscribe((data) => (this.products = data));
   }
 
