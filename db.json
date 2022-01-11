@@ -83,42 +83,6 @@
       "price": 1.19,
       "description": "Le poireau cultivé est cultivée comme plante potagère pour ses feuilles consommées comme légumes.",
       "category": "legume"
-    },
-    {
-      "name": "dddddd",
-      "images": [
-        "d"
-      ],
-      "stock": 0,
-      "available": true,
-      "price": 3,
-      "description": "ddddddddd",
-      "category": "fruit",
-      "id": 8
-    },
-    {
-      "name": "d",
-      "images": [
-        "d"
-      ],
-      "stock": 0,
-      "available": true,
-      "price": 4,
-      "description": "",
-      "category": "autres",
-      "id": 9
-    },
-    {
-      "name": "",
-      "images": [
-        ""
-      ],
-      "stock": 0,
-      "available": true,
-      "price": "",
-      "description": "",
-      "category": "",
-      "id": 10
     }
   ],
   "users": [

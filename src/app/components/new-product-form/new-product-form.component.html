@@ -1,6 +1,6 @@
 <h1 class="p-2">Ajouter un produit</h1>
 
-<form (ngSubmit)="onSubmit(addProduct)" #addProduct="ngForm">
+<form (ngSubmit)="onSubmit(addProduct)" #addProduct="ngForm" novalidate>
   <div class="row mb-3">
     <div class="col">
       <label for="productName" class="form-label">Nom</label>
@@ -127,13 +127,21 @@
     </div>
   </div>
 
-  <button
-    type="submit"
-    class="btn btn-primary"
-    [attr.disabled]="addProduct.invalid"
-  >
-    Ajouter un produit
-  </button>
+  <div class="d-flex justify-content-between">
+    <a
+      [routerLink]="['/products']"
+      class="btn btn-outline-primary"
+      role="button"
+    >
+      <i class="bi bi-arrow-left"></i> Retour aux produits</a
+    >
 
-  <a [routerLink]="['/products']">Retour aux produits</a>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [attr.disabled]="addProduct.invalid"
+    >
+      Ajouter un produit
+    </button>
+  </div>
 </form>

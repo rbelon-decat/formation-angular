@@ -1,5 +1,18 @@
 <div class="row justify-content-md-center mb-3 flex-wrap">
   <div class="col-sm d-flex flex-wrap flex-column">
+    <!-- Search input -->
+
+    <div>
+      <label for="searchProduct" class="form-label">Rechercher</label>
+      <input
+        type="text"
+        class="form-control"
+        id="searchProduct"
+        name="searchProduct"
+        [(ngModel)]="searchInput"
+        (input)="onSearch()"
+      />
+    </div>
 
     <!-- Category buttons -->
     <button

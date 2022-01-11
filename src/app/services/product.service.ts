@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { Product } from 'src/models/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +14,14 @@ export class ProductService {
   constructor(private readonly http: HttpClient) {}
 
   // Get all (or by category) products in the databade
-  public getProducts(page: number, category?: string): Observable<any> {
+  public getProducts(page: number, category?: string, search?: string): Observable<any> {
     const page_query = `_page=${page}&_limit=${this.PAGINATION_LIMIT}`;
+    const search_query = search && `&q=${search}`;
 
     if(category && category !== 'all') {
-      return this.http.get(`${this.BASE_URL}/products?category=${category}&${page_query}`);
+      return this.http.get(`${this.BASE_URL}/products?category=${category}&${page_query}${search_query}`);
     }
-    return this.http.get(`${this.BASE_URL}/products?${page_query}`);
+    return this.http.get(`${this.BASE_URL}/products?${page_query}${search_query}`);
   }
 
   // Get one product by ID in the database
@@ -27,7 +29,7 @@ export class ProductService {
     return this.http.get(`${this.BASE_URL}/products/${id}`);
   }
 
-  public newProduct(product: object): Observable<any> {
+  public newProduct(product: Product): Observable<any> {
     return this.http.post(`${this.BASE_URL}/products`, product)
   }
 

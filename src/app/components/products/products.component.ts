@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -9,6 +10,7 @@ export class ProductsComponent implements OnInit {
   selectedCategory: string = 'all';
   products: any;
   page = 1;
+  searchInput = '';
 
   constructor(private readonly productService: ProductService) {}
 
@@ -18,6 +20,13 @@ export class ProductsComponent implements OnInit {
 
   public get getCategories(): string[] {
     return this.productService.categories;
+  }
+
+  public onSearch(): void {
+    console.log(this.searchInput);
+    this.productService
+      .getProducts(this.page, this.selectedCategory, this.searchInput)
+      .subscribe((data) => (this.products = data));
   }
 
   public getProducts(page: number, category: string): void {
@@ -34,15 +43,18 @@ export class ProductsComponent implements OnInit {
   }
 
   public nextPage(): void {
-    if(this.products.length && this.products.length >= this.productService.PAGINATION_LIMIT) {
+    if (
+      this.products.length &&
+      this.products.length >= this.productService.PAGINATION_LIMIT
+    ) {
       this.page++;
       this.getProducts(this.page, this.selectedCategory);
     }
   }
 
   public previousPage(): void {
-    if(this.page > 1) {
-      this.page --;
+    if (this.page > 1) {
+      this.page--;
       this.getProducts(this.page, this.selectedCategory);
     }
   }
