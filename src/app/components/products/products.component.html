@@ -1,50 +1,62 @@
-<div class="d-flex mb-3 flex-wrap justify-content-evenly">
-  <button type="button" class="btn btn-outline-primary" (click)="getProducts()">
-    <!-- Button to reset all filters and get all products by calling "getProducts()" -->
-    Tous
-  </button>
-  <button
-    type="button"
-    class="btn btn-primary"
-    *ngFor="let category of categories"
-    (click)="getProductsByCategory(category)"
-  >
-    <!-- Button to get products by category -->
-    {{ category | titlecase }}
-  </button>
-</div>
+<div class="row justify-content-md-center mb-3">
+  <div class="col-2 d-flex flex-wrap flex-column">
+    <button type="button" class="btn btn-dark" (click)="getProducts()">
+      <!-- Button to reset all filters and get all products by calling "getProducts()" -->
+      Tous
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark mt-2"
+      *ngFor="let category of categories"
+      (click)="getProductsByCategory(category)"
+    >
+      <!-- Button to get products by category -->
+      {{ category | titlecase }}
+    </button>
+  </div>
 
-<div
-  class="d-flex mb-3 flex-wrap justify-content-center"
-  *ngIf="products?.length"
->
-  <div class="card m-2" *ngFor="let product of products">
-    <img
-      src="{{ product.images[0] }}"
-      class="card-img-top p-2"
-      alt="{{ product.name }}"
-    />
-    <div class="card-body">
-      <h5 class="card-title">
-        {{ product.name }}
-        <span class="badge rounded-pill bg-secondary">{{
-          product.category | titlecase
-        }}</span>
-      </h5>
-      <p class="card-text">{{ product.description }}</p>
-      <a
-        [routerLink]="['/products/', product.id]"
-        class="btn btn-primary buy-btn"
-        [ngClass]="{ 'btn-danger': !product.stock }"
-        >{{
-          product.stock ? (product.price | currency: 'EUR') : 'Rupture de stock'
-        }}</a
+  <div class="col" *ngIf="products?.length">
+    <div class="alert alert-secondary" role="alert" *ngIf="showQuantities">
+      {{ products.length }} produit(s) trouvé(s)
+    </div>
+    <!-- Product card -->
+    <div class="d-flex flex-wrap justify-content-center">
+      <div
+        class="card m-2 d-flex align-items-end flex-column"
+        *ngFor="let product of products"
       >
+        <img
+          src="{{ product.images[0] }}"
+          class="card-img-top p-2"
+          alt="{{ product.name }}"
+        />
+        <div class="card-body mt-auto">
+          <h5 class="card-title">
+            {{ product.name }}
+            <span class="badge rounded-pill bg-secondary">{{
+              product.category | titlecase
+            }}</span>
+          </h5>
+          <p class="card-text">{{ product.description }}</p>
+        </div>
+        <div class="d-flex align-items-baseline">
+          <p class="text-muted me-auto">{{ product.stock }} restant</p>
+          <p class="p-2 h5">
+            {{ product.price | currency: 'EUR' }}
+          </p>
+          <a
+            [routerLink]="['/products/', product.id]"
+            class="btn btn-primary buy-btn m-2"
+            [ngClass]="{ 'btn-danger': !product.stock }"
+            >{{ product.stock ? 'Détails' : 'Rupture' }}</a
+          >
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="alert alert-warning" role="alert" *ngIf="!products?.length">
-  <!-- If no products found, show an error message -->
-  Nous n'avons trouvé aucun produit, veuillez réessayer plus tard.
+  <div class="alert alert-warning" role="alert" *ngIf="!products?.length">
+    <!-- If no products found, show an error message -->
+    Nous n'avons trouvé aucun produit, veuillez réessayer plus tard.
+  </div>
 </div>

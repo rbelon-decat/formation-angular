@@ -10,7 +10,8 @@
 </nav>
 
 <div class="alert alert-warning" role="alert" *ngIf="!product">
-  Ce produit n'est plus disponible, <a [routerLink]="['/']">Retourner à l'accueil</a>.
+  Ce produit n'est plus disponible,
+  <a [routerLink]="['/']">Retourner à l'accueil</a>.
 </div>
 
 <div class="card" *ngIf="product?.name">
@@ -24,17 +25,29 @@
     </div>
     <div class="col">
       <div class="card-block px-2 mt-3">
-        <h4 class="card-title">{{ product.name }}</h4>
+        <h4 class="card-title">
+          {{ product.name }}
+          <span
+            class="dot-product bg-success"
+            [ngClass]="{ 'bg-danger': !product.available }"
+          ></span>
+        </h4>
+        <p class="text-muted">Catégorie {{ product.category | titlecase }}</p>
         <p class="card-text">{{ product.description }}</p>
-        <div class="card-text d-flex justify-content-start">
-          <span
-            class="badge bg-primary p-2"
-            >{{ product.price | currency: 'EUR' }}</span
-          >
-          <div style="width: 5px;"></div>
-          <span
-            class="badge bg-success p-2"
-            [ngClass]="{ 'bg-danger': !product.stock }"
+        <button
+          type="button"
+          (click)="toggleProduct()"
+          class="btn btn-success p-2 btn-sm mb-1"
+          [ngClass]="{ 'btn-danger': product.available }"
+        >
+          {{ product.available ? 'Désactiver' : 'Activer' }} ce produit
+        </button>
+        <div class="card-text d-flex justify-content-start pb-3">
+          <span class="badge bg-primary p-2">{{
+            product.price | currency: 'EUR'
+          }}</span>
+          <div style="width: 5px"></div>
+          <span class="badge bg-secondary p-2"
             >{{ product.stock }} en stock</span
           >
         </div>

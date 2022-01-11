@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,18 +9,12 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductsComponent implements OnInit {
   categories = ['fruit', 'legume', 'legume-fruit'];
   products: any;
+  showQuantities = false;
 
-  constructor(
-    private readonly productService: ProductService,
-    private readonly route: ActivatedRoute
-  ) {}
+  constructor(private readonly productService: ProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
-
-    this.productService
-      .getProductById(1)
-      .subscribe((data) => console.log(data));
   }
 
   public getProductsByCategory(category: string): void {
@@ -29,15 +22,17 @@ export class ProductsComponent implements OnInit {
     if (!this.categories.includes(category)) {
       this.getProducts();
     }
-
+    
+    this.showQuantities = true;
     this.productService
       .getProductByCategory(category)
       .subscribe((data) => (this.products = data));
   }
 
   public getProducts(): void {
-    this.productService
-      .getProducts()
-      .subscribe((data) => (this.products = data));
+    this.productService.getProducts().subscribe((data) => {
+      this.products = data;
+      this.showQuantities = false;
+    });
   }
 }

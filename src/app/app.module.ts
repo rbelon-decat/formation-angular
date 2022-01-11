@@ -9,10 +9,23 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, HomeComponent, NavbarComponent, ProductsComponent, ProductPageComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    HomeComponent,
+    NavbarComponent,
+    ProductsComponent,
+    ProductPageComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FontAwesomeModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

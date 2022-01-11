@@ -6,10 +6,12 @@
       "images": [
         "https://www.conservation-nature.fr/wp-content/uploads/visuel/fruit/shutterstock_575378506.jpg"
       ],
-      "stock": 12,
+      "stock": 18,
+      "available": true,
       "price": 0.99,
       "description": "Cette pomme vous apportera tout ce qu'il faut pour le petit déjeuner.",
-      "category": "fruit"
+      "category": "fruit",
+      "availablity": true
     },
     {
       "id": 6,
@@ -18,6 +20,7 @@
         "https://mapetiteassiette.com/wp-content/uploads/2020/07/aubergine.jpg"
       ],
       "stock": 22,
+      "available": true,
       "price": 0.99,
       "description": "L’aubergine est une plante dicotylédone de la famille des Solanaceae, cultivées pour son légume-fruit.",
       "category": "legume"
@@ -29,6 +32,7 @@
         "https://tous-les-fruits.com/wp-content/uploads/2018/02/poire.jpg?ezimgfmt=ng%3Awebp%2Fngcb27%2Frs%3Adevice%2Frscb27-2"
       ],
       "stock": 46,
+      "available": true,
       "price": 1.39,
       "description": "Une poire parfaite pour une pause équilibrée !",
       "category": "fruit"
@@ -40,6 +44,7 @@
         "https://back.femininbio.com/attachments/2020/11/20/square/w1000/11065-banane.jpg"
       ],
       "stock": 0,
+      "available": false,
       "price": 3.79,
       "description": "Un lot d'1kg de bananes pour un apport en fer quotidien.",
       "category": "fruit"
@@ -51,6 +56,7 @@
         "https://fridg-front.s3.amazonaws.com/media/CACHE/images/products/clementine-feuille-environ-500-g/1d1dc4234441d936f21826ca64b75e06.jpg"
       ],
       "stock": 9,
+      "available": true,
       "price": 2.79,
       "description": "Le fruit parfait pour faire le plein de vitamines pendant l'hiver",
       "category": "fruit"
@@ -62,6 +68,7 @@
         "https://cdn.manomano.com/images/images_products/1388202/P/3371756_1.jpg"
       ],
       "stock": 43,
+      "available": true,
       "price": 0.39,
       "description": "La tomate est une espèce de plantes herbacées du genre Solanum de la famille des Solanacées",
       "category": "legume-fruit"
@@ -73,6 +80,7 @@
         "https://produits.bienmanger.com/34835-0w470h470_Poireaux_France_Bio.jpg"
       ],
       "stock": 3,
+      "available": false,
       "price": 1.19,
       "description": "Le poireau cultivé est cultivée comme plante potagère pour ses feuilles consommées comme légumes.",
       "category": "legume"
