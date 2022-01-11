@@ -10,19 +10,17 @@ export class ProductService {
 
   constructor(private readonly http: HttpClient) {}
 
-  // Get all the products in the databade
-  public getProducts(): Observable<any> {
+  // Get all (or by category) products in the databade
+  public getProducts(category?: string): Observable<any> {
+    if(category) {
+      return this.http.get(`${this.BASE_URL}/products?category=${category}`);
+    }
     return this.http.get(`${this.BASE_URL}/products`);
   }
 
   // Get one product by ID in the database
   public getProductById(id: number): Observable<any> {
     return this.http.get(`${this.BASE_URL}/products/${id}`);
-  }
-
-  // Get products by category in the database
-  public getProductByCategory(category: string): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/products?category=${category}`);
   }
 
   public patchProduct(id: number, field: object): Observable<any> {

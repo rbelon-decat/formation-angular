@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
     
     this.showQuantities = true;
     this.productService
-      .getProductByCategory(category)
+      .getProducts(category)
       .subscribe((data) => (this.products = data));
   }
 
