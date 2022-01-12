@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/products']">Produits</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="isAdmin()">
           <a
             class="nav-link dropdown-toggle text-primary"
             href="#"
@@ -32,9 +32,17 @@
             Administration
           </a>
           <ul class="dropdown-menu" aria-labelledby="adminNavbarDropdown">
-            <li><a class="dropdown-item" [routerLink]="['/admin/product/list']">Produits</a></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/admin/product/list']"
+                >Produits</a
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" [routerLink]="['/admin/user/list']">Utilisateurs</a></li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/admin/user/list']"
+                >Utilisateurs</a
+              >
+            </li>
           </ul>
         </li>
         <li class="nav-item">
@@ -43,17 +51,21 @@
           ></a>
         </li>
       </ul>
-      <!-- <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
-
-      <button class="btn btn-outline-success me-2" [routerLink]="['/auth']">
+      <div *ngIf="user?.name">
+        <span class="p-2">Bonjour, {{ user?.name }}</span>
+        <button
+          class="btn btn-outline-danger me-2"
+          [routerLink]="['/auth/logout']"
+        >
+          <i class="bi bi-box-arrow-right mr-2"></i>
+          Déconnexion
+        </button>
+      </div>
+      <button
+        class="btn btn-outline-success me-2"
+        [routerLink]="['/auth/login']"
+        *ngIf="!getUser()"
+      >
         <i class="bi bi-person mr-2"></i>
         Se connecter
       </button>

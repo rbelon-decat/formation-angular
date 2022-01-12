@@ -17,6 +17,7 @@ import { NewProductFormComponent } from './components/admin/new-product-form/new
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { ProductListComponent } from './components/admin/product-list/product-li
     FontAwesomeModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

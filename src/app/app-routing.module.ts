@@ -14,14 +14,27 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'products/:id', component: ProductPageComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'auth', component: AuthComponent },
   { path: 'admin/product/list', component: ProductListComponent },
   { path: 'admin/product/new', component: NewProductFormComponent },
   { path: 'admin/user/list', component: UserListComponent },
+  {
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        component: AuthComponent,
+      },
+      {
+        path: 'logout',
+        component: AuthComponent,
+      },
+    ],
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

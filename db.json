@@ -90,37 +90,44 @@
     {
       "id": 1,
       "name": "Robin",
-      "role": "superadmin"
+      "password": "toto",
+      "roles": ["superadmin", "admin", "user"]
     },
     {
       "id": 2,
       "name": "Julien",
-      "role": "admin"
+      "password": "toto",
+      "roles": ["admin", "user"]
     },
     {
       "id": 3,
       "name": "Kyo",
-      "role": "user"
+      "password": "toto",
+      "roles": ["user"]
     },
     {
       "id": 4,
       "name": "Yoann",
-      "role": "user"
+      "password": "toto",
+      "roles": ["user"]
     },
     {
       "id": 5,
       "name": "Iulia",
-      "role": "user"
+      "password": "toto",
+      "roles": ["user"]
     },
     {
       "id": 6,
       "name": "Camille",
-      "role": "user"
+      "password": "toto",
+      "roles": ["user"]
     },
     {
       "id": 7,
       "name": "Joseph",
-      "role": "user"
+      "password": "toto",
+      "roles": ["user"]
     }
   ]
 }
