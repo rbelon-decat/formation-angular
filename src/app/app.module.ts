@@ -13,8 +13,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { FormsModule } from '@angular/forms';
-import { NewProductFormComponent } from './components/new-product-form/new-product-form.component';
+import { NewProductFormComponent } from './components/admin/new-product-form/new-product-form.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     AuthComponent,
     NewProductFormComponent,
     CarouselComponent,
+    UserListComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@
         class="form-control"
         id="productName"
         name="productName"
+        value="{{ product?.name }}"
         ngModel
         required
       />
@@ -31,7 +32,7 @@
         required
       >
         <option
-          *ngFor="let category of getCategories; let first = first"
+          *ngFor="let category of getCategories"
           value="{{ category }}"
         >
           {{ category | titlecase }}
@@ -54,6 +55,7 @@
       class="form-control"
       id="productImage"
       name="productImage"
+      value="{{ product?.images || ['']}}"
       ngModel
       required
     />
@@ -76,6 +78,7 @@
         name="productPrice"
         min="1"
         step="any"
+        value="{{ product?.price }}"
         ngModel
         required
       />
@@ -94,6 +97,7 @@
         class="form-control"
         id="productStock"
         name="productStock"
+        value="{{ product?.stock }}"
         min="0"
         step="any"
         ngModel
@@ -114,6 +118,7 @@
       class="form-control"
       id="productDescription"
       name="productDescription"
+      value="{{ product?.description }}"
       rows="3"
       ngModel
       required
@@ -139,7 +144,6 @@
     <button
       type="submit"
       class="btn btn-primary"
-      [attr.disabled]="addProduct.invalid"
     >
       Ajouter un produit
     </button>

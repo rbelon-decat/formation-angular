@@ -1,7 +1,7 @@
 export interface Product {
     id?: number;
     name: string;
-    images: string[];
+    images?: string[];
     stock?: number;
     available: boolean;
     price: number;

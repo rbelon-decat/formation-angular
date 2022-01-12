@@ -2,12 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/models/product.model';
 
 @Component({
   selector: 'app-new-product-form',
   templateUrl: './new-product-form.component.html',
 })
 export class NewProductFormComponent implements OnInit {
+  @Input() method?: 'add' | 'edit' = 'add';
+  @Input() product?: Product;
   showErrors = false;
 
   constructor(
@@ -34,16 +37,24 @@ export class NewProductFormComponent implements OnInit {
       return;
     }
 
-    this.productService
-      .newProduct({
-        name: form.value.productName,
-        images: [form.value.productImage],
-        stock: form.value.productStock || 0,
-        available: true,
-        price: form.value.productPrice,
-        description: form.value.productDescription,
-        category: form.value.productCategory,
-      })
+    const productValues = {
+      name: form.value.productName,
+      images: [form.value.productImage || 'https://la-tricoterie.fr/wp-content/uploads/2018/09/visuel-a-venir.jpg'],
+      stock: form.value.productStock || 0,
+      available: true,
+      price: form.value.productPrice,
+      description: form.value.productDescription,
+      category: form.value.productCategory,
+    };
+
+    if(this.method === 'add') {
+      this.productService
+      .newProduct(productValues)
       .subscribe((data) => this.router.navigate(['/products', data.id]));
+    }
+
+    if(this.method === 'edit' && this.product) {
+      this.productService.editProduct({...productValues, id: this.product.id}).subscribe(data => console.log(data))
+    }
   }
 }

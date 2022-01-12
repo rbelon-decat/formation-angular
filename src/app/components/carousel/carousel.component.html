@@ -1,6 +1,6 @@
 <a *ngIf="product && !hasImages" [routerLink]="['/products/', product?.id]">
   <img
-    src="{{ getImage }}"
+    src="{{ getImage || 'https://la-tricoterie.fr/wp-content/uploads/2018/09/visuel-a-venir.jpg' }}"
     class="d-block w-100"
     alt="Image de {{ product?.name }}"
   />

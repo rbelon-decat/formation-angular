@@ -36,11 +36,10 @@ export class ProductsComponent implements OnInit {
     }
 
     this.selectedCategory = category;
-
     this.page = page;
 
     this.productService
-      .getProducts(page, category, this.searchInput)
+      .getProducts(page, category, search)
       .subscribe((data) => (this.products = data));
   }
 

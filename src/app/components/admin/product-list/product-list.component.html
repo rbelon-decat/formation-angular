@@ -1,0 +1,119 @@
+<div class="d-flex justify-content-between">
+  <h1>List des produits</h1>
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    [routerLink]="['/admin/product/new']"
+  >
+    <i class="bi bi-plus-lg"></i> Ajouter
+  </button>
+</div>
+
+<!-- Bouton (+) ajouter produit -->
+
+<table class="table table-hover mt-5">
+  <thead>
+    <tr>
+      <!-- Pastille dispo / indispo ? -->
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Catégorie</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <th scope="row">{{ product.id }}</th>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category | titlecase }}</td>
+      <td [ngClass]="{ 'text-danger': !product.stock }">{{ product.stock }}</td>
+      <td>{{ product.price | currency: 'EUR' }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#editProductModal"
+          (click)="selectProduct(product)"
+        >
+          <i class="bi bi-pencil"></i>
+        </button>
+        <span class="p-1"></span>
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteProductModal"
+          (click)="selectProduct(product)"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Edit Modal -->
+<div
+  class="modal fade"
+  id="editProductModal"
+  tabindex="-1"
+  aria-labelledby="editProductModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content modal-body" *ngIf="selectedProduct">
+
+        <app-new-product-form [method]="'edit'" [product]="selectedProduct"></app-new-product-form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+  class="modal fade"
+  id="deleteProductModal"
+  tabindex="-1"
+  aria-labelledby="deleteProductModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteProductModalLabel">
+          Supprimer un produit
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <span class="text-danger"
+          >Vous êtes sur le point de supprimer définitivement le produit
+          {{ selectedProduct?.name }}</span
+        >
+        <br />
+        <span>Confirmer la suppression ?</span>
+      </div>
+      <div class="modal-footer" *ngIf="selectedProduct">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuler
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteProduct(selectedProduct.id)"
+        >
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagination -->
