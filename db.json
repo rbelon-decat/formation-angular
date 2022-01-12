@@ -72,6 +72,18 @@
       "description": "gggggggggggggggggggggggg",
       "category": "fruits",
       "id": 8
+    },
+    {
+      "name": "Poireaux",
+      "images": [
+        "https://produits.bienmanger.com/34835-0w470h470_Poireaux_France_Bio.jpg"
+      ],
+      "stock": 10,
+      "available": true,
+      "price": 2,
+      "description": "The leek is a vegetable, a cultivar of Allium ampeloprasum, the broadleaf wild leek. ",
+      "category": "",
+      "id": 9
     }
   ],
   "users": [

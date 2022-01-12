@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/models/product.model';
+import { searchQuery } from 'src/models/searchQuery.model';
 
 @Component({
   selector: 'app-product-list',
@@ -11,16 +12,16 @@ export class ProductListComponent implements OnInit {
   products?: Product[];
   page = 1;
   selectedCategory: string = 'tous';
-  searchInput = '';
+  search = {query: ''};
   selectedProduct?: Product;
 
   constructor(private readonly productService: ProductService) {}
 
   ngOnInit(): void {
-    this.getProducts(this.page, this.selectedCategory, this.searchInput);
+    this.getProducts(this.page, this.selectedCategory, this.search);
   }
 
-  public getProducts(page: number, category: string, search?: string): void {
+  public getProducts(page: number, category: string, search: searchQuery): void {
     // If input category not exists in categories list (to prevent injections), return all products
     if (!this.productService.categories.includes(category)) {
       return;
@@ -46,7 +47,7 @@ export class ProductListComponent implements OnInit {
     this.productService
       .deleteProduct(id)
       .subscribe((data) =>
-        this.getProducts(this.page, this.selectedCategory, this.searchInput)
+        this.getProducts(this.page, this.selectedCategory, this.search)
       );
   }
 }

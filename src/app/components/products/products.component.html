@@ -2,28 +2,50 @@
   <div class="col-sm d-flex flex-wrap flex-column">
     <!-- Search input -->
 
-    <div>
-      <label for="searchProduct" class="form-label">Rechercher</label>
-      <input
-        type="text"
-        class="form-control"
-        id="searchProduct"
-        name="searchProduct"
-        [(ngModel)]="searchInput"
-        (input)="onSearch()"
-      />
-    </div>
-
     <!-- Category buttons -->
     <button
       type="button"
       class="btn btn-outline-dark mt-2"
       *ngFor="let category of getCategories"
-      (click)="getProducts(page, category, searchInput)"
+      (click)="getProducts(page, category, search)"
       [ngClass]="{ 'btn-dark text-white': selectedCategory === category }"
     >
       {{ category | titlecase }}
     </button>
+
+    <label for="searchProduct" class="form-label mt-1">Rechercher</label>
+    <input
+      type="text"
+      class="form-control"
+      id="searchProduct"
+      name="searchProduct"
+      [(ngModel)]="search.query"
+      (input)="onSearch()"
+    />
+
+    <label for="priceProduct" class="form-label mt-1">Prix</label>
+    <div class="row">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          id="priceProductGte"
+          name="priceProductGte"
+          [(ngModel)]="search.priceGte"
+          (input)="onSearch()"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          id="priceProductLte"
+          name="priceProductLte"
+          [(ngModel)]="search.priceLte"
+          (input)="onSearch()"
+        />
+      </div>
+    </div>
 
     <!-- Number of results -->
     <div
@@ -52,7 +74,7 @@
     <!-- Pagination -->
     <nav aria-label="Page navigation example">
       <ul class="pagination p-3 d-flex justify-content-center">
-        <li class="page-item" [ngClass]="{'disabled': page === 1 }">
+        <li class="page-item" [ngClass]="{ disabled: page === 1 }">
           <a
             class="page-link"
             aria-label="Previous"
@@ -65,11 +87,11 @@
         <li
           *ngFor="let number of [1, 2, 3, 4, 5]"
           class="page-item"
-          [ngClass]="{ 'active': number === page }"
+          [ngClass]="{ active: number === page }"
         >
           <a
             class="page-link"
-            (click)="getProducts(number, selectedCategory, searchInput)"
+            (click)="getProducts(number, selectedCategory, search)"
             type="button"
             >{{ number }}</a
           >
