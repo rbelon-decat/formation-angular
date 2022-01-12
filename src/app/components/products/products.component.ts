@@ -7,7 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './products.component.html',
 })
 export class ProductsComponent implements OnInit {
-  selectedCategory: string = 'all';
+  selectedCategory: string = 'tous';
   products: any;
   page = 1;
   searchInput = '';
@@ -37,8 +37,10 @@ export class ProductsComponent implements OnInit {
 
     this.selectedCategory = category;
 
+    this.page = page;
+
     this.productService
-      .getProducts(this.page, category, this.searchInput)
+      .getProducts(page, category, this.searchInput)
       .subscribe((data) => (this.products = data));
   }
 

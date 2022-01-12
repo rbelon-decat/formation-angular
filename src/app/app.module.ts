@@ -14,6 +14,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { AuthComponent } from './components/auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { NewProductFormComponent } from './components/new-product-form/new-product-form.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NewProductFormComponent } from './components/new-product-form/new-produ
     ProductCardComponent,
     AuthComponent,
     NewProductFormComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,8 @@
       "id": 1,
       "name": "Pomme rouge",
       "images": [
-        "https://www.conservation-nature.fr/wp-content/uploads/visuel/fruit/shutterstock_575378506.jpg"
+        "https://www.conservation-nature.fr/wp-content/uploads/visuel/fruit/shutterstock_575378506.jpg",
+        "https://media.lactualite.com/2011/06/une-pomme-par-jour.jpg"
       ],
       "stock": 18,
       "available": true,

@@ -1,0 +1,48 @@
+<a *ngIf="product && !hasImages" [routerLink]="['/products/', product?.id]">
+  <img
+    src="{{ getImage }}"
+    class="d-block w-100"
+    alt="Image de {{ product?.name }}"
+  />
+</a>
+
+<div
+  *ngIf="product && hasImages"
+  id="carousel_p{{ product.id }}"
+  class="carousel slide carousel-dark"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div
+      *ngFor="let image of product.images; let isFirst = first"
+      class="carousel-item"
+      [ngClass]="{ active: isFirst }"
+    >
+      <a [routerLink]="['/products/', product?.id]">
+        <img
+          src="{{ image }}"
+          class="d-block w-100 carousel-img p-3"
+          alt="Image de {{ product.name }}"
+        />
+      </a>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    [attr.data-bs-target]="'#carousel_p' + product.id"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    [attr.data-bs-target]="'#carousel_p' + product.id"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

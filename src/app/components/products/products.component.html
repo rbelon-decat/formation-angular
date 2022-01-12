@@ -29,20 +29,9 @@
     <div
       class="alert alert-primary mt-2"
       role="alert"
-      *ngIf="selectedCategory !== 'all'"
+      *ngIf="selectedCategory !== 'tous'"
     >
       {{ products.length }} produit(s) trouvé(s)
-    </div>
-
-    <!-- Pagination -->
-    <div class="btn-group mt-2" role="group" aria-label="Pagination">
-      <button type="button" class="btn btn-primary" (click)="previousPage()">
-        <i class="bi bi-arrow-left"></i>
-      </button>
-      <button class="btn btn-primary">{{ page }}</button>
-      <button type="button" class="btn btn-primary" (click)="nextPage()">
-        <i class="bi bi-arrow-right"></i>
-      </button>
     </div>
   </div>
 
@@ -59,6 +48,46 @@
         class="m-2"
       ></app-product-card>
     </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination p-3 d-flex justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': page === 1 }">
+          <a
+            class="page-link"
+            aria-label="Previous"
+            (click)="previousPage()"
+            type="button"
+          >
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li
+          *ngFor="let number of [1, 2, 3, 4, 5]"
+          class="page-item"
+          [ngClass]="{ 'active': number === page }"
+        >
+          <a
+            class="page-link"
+            (click)="getProducts(number, selectedCategory, searchInput)"
+            type="button"
+            >{{ number }}</a
+          >
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            aria-label="Next"
+            (click)="nextPage()"
+            type="button"
+          >
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- No products found, alert -->
     <div
       class="alert alert-warning mt-2"
       role="alert"
